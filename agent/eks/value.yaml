@@ -6,8 +6,9 @@ targetSystem: "linux"
 datadog:
   # If using secrets, create a secret for API Key and App Key first
   # 1. create API key and App key in Datadog - https://docs.datadoghq.com/account_management/api-app-keys/
-  # 2. create secret kubectl create secret generic datadog-secret --from-literal api-key=$DD_API_KEY --from-literal app-key=$DD_APP_KEY
+  # 2. create secret kubectl create secret generic datadog-api-secret --from-literal api-key=$DD_API_KEY
   apiKeyExistingSecret: <DATADOG_API_KEY_SECRET>
+  # create secret kubectl create secret generic datadog-app-secret --from-literal app-key=$DD_APP_KEY
   appKeyExistingSecret: <DATADOG_APP_KEY_SECRET>
   
   # If not using secrets, then use apiKey and appKey instead
