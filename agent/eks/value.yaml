@@ -1,0 +1,68 @@
+# Datadog Agent with Logs, APM, NPM, Processes, and System Probe enabled
+
+
+# targetSystem -- Target OS for this deployment (possible values: linux, windows)
+targetSystem: "linux"
+datadog:
+  # If using secrets, create a secret for API Key and App Key first
+  # 1. create API key and App key in Datadog - https://docs.datadoghq.com/account_management/api-app-keys/
+  # 2. create secret kubectl create secret generic datadog-secret --from-literal api-key=$DD_API_KEY --from-literal app-key=$DD_APP_KEY
+  apiKeyExistingSecret: <DATADOG_API_KEY_SECRET>
+  appKeyExistingSecret: <DATADOG_APP_KEY_SECRET>
+  
+  # If not using secrets, then use apiKey and appKey instead
+  # apiKey: <DATADOG_API_KEY>
+  # appKey: <DATADOG_APP_KEY>
+
+  clusterName: <CLUSTER_NAME>
+  
+  ## Learn more about tagging: https://docs.datadoghq.com/tagging/
+  tags: []
+  #   - "<KEY_1>:<VALUE_1>"
+  #   - "<KEY_2>:<VALUE_2>"
+  
+  # datadog.kubelet.tlsVerify should be `false` on kind and minikube
+  # to establish communication with the kubelet
+  # kubelet:
+    # tlsVerify: "false"
+  
+  logs:
+    # ref: https://docs.datadoghq.com/agent/basic_agent_usage/kubernetes/#log-collection-setup
+    enabled: true
+    # true to collect logs from all discovered containers by default
+    containerCollectAll: true
+  apm:
+    portEnabled: true
+    socketPath: /var/run/datadog/apm.socket
+    hostSocketPath: /var/run/datadog/
+  processAgent:
+    enabled: true
+    processCollection: true
+  systemProbe:
+    # datadog.systemProbe.enableTCPQueueLength -- Enable the TCP queue length eBPF-based check
+    enableTCPQueueLength: false
+    # datadog.systemProbe.enableOOMKill -- Enable the OOM kill eBPF-based check
+    enableOOMKill: true
+    # datadog.systemProbe.collectDNSStats -- Enable DNS stat collection
+    collectDNSStats: true
+  networkMonitoring:
+    # datadog.networkMonitoring.enabled -- Enable network performance monitoring
+    enabled: false
+agents:
+  rbac:
+    create: true
+    serviceAccountName: default
+clusterAgent:
+  enabled: true
+  rbac:
+    create: true
+    serviceAccountName: default
+   
+  # Enable the metricsProvider to be able to scale based on metrics in Datadog  
+  metricsProvider:
+    enabled: true
+    createReaderRbac: true
+    useDatadogMetrics: true
+    service:
+      type: ClusterIP
+      port: 8443
