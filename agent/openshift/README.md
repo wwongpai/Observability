@@ -47,9 +47,7 @@ For reference you can see the SCC template files here:
 - [helm-charts/cluster-agent-scc.yaml at main · DataDog/helm-charts ](https://github.com/DataDog/helm-charts/blob/main/charts/datadog/templates/cluster-agent-scc.yaml)
 - [helm-charts/agent-scc.yaml at main · DataDog/helm-charts ](https://github.com/DataDog/helm-charts/blob/main/charts/datadog/templates/agent-scc.yaml)
 
-:wave: When installing the chart, we recommend to install on a non-default namespace. Due to existing SecurityContextConstraints in the default namespace.
-
-To do so first create your desired namespace (can name whatever):
+:wave: When installing the chart, we recommend to install on a non-default namespace. Due to existing SecurityContextConstraints in the default namespace. To do so first create your desired namespace (can name whatever):
 ```
 oc new-project datadog-openshift
 ```
