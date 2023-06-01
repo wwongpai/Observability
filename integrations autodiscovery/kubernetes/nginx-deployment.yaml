@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+#(...)
+spec:
+  template:
+    metadata:
+      #(...)
+      annotations:
+        ad.datadoghq.com/nginx-test.check_names: '["nginx"]'
+        ad.datadoghq.com/nginx-test.init_configs: '[{}]'
+        ad.datadoghq.com/nginx-test.instances: '[{"nginx_status_url": "http://%%host%%/nginx_status"}]'
+    spec:
+      containers:
+      - name: nginx-test
+        image: nginx:latest
