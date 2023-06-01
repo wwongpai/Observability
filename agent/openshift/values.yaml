@@ -1,0 +1,103 @@
+# Datadog Agent with Logs, APM, Processes, and System Probe enabled
+# with specific configurations to work on OpenShift 4.
+# When installing the chart, install onto a non-default namespace with
+# `helm install --namespace <your_ns>` due to existing SecurityContextConstraints
+# on the default namespace. For more details about setting appropriate security
+# constraints, see https://docs.datadoghq.com/integrations/openshift/ and
+# https://www.datadoghq.com/blog/openshift-monitoring-with-datadog/
+
+targetSystem: "linux"
+datadog:
+  # apiKey: <DATADOG_API_KEY>
+  # appKey: <DATADOG_APP_KEY>
+  # If not using secrets, then use apiKey and appKey instead
+  apiKeyExistingSecret: <DATADOG_API_KEY_SECRET>
+  appKeyExistingSecret: <DATADOG_APP_KEY_SECRET>
+  clusterName: <CLUSTER_NAME>
+  site: datadoghq.com
+  tags: []
+  criSocketPath: /var/run/crio/crio.sock
+  # Depending on your DNS/SSL setup, it might not be possible to verify the Kubelet cert properly
+  # If you have proper CA, you can switch it to true
+  kubelet:
+    tlsVerify: false
+  confd:
+    cri.yaml: |-
+      init_config:
+      instances:
+        - collect_disk: true
+  apm:
+    portEnabled: true
+  logs:
+    enabled: true
+    containerCollectAll: true
+    autoMultiLineDetection: true
+  processAgent:
+    processCollection: true
+  dogstatsd:
+    useHostPort: true
+  kubeStateMetricsCore:
+    enabled: true
+  kubeStateMetricsEnabled: false
+  networkMonitoring:
+    enabled: true
+
+agents:
+  tolerations:
+  # Deploy Agents on master nodes
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/master
+    operator: Exists
+  # Deploy Agents on infra nodes
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/infra
+    operator: Exists
+  podSecurity:
+    securityContextConstraints:
+      create: true
+  useHostNetwork: true
+
+clusterAgent:
+  podSecurity:
+    securityContextConstraints:
+      create: true
+  admissionController:
+    enabled: true
+    ## @param mutateUnlabelled - boolean - optional
+    ## Enable injecting config without having the pod label:
+    ## admission.datadoghq.com/enabled="true"
+    #
+    mutateUnlabelled: false
+  confd:
+    kube_controller_manager.yaml: |-
+      cluster_check: true
+      init_config:
+      instances:
+        - prometheus_url: https://kube-controller-manager.openshift-kube-controller-manager/metrics
+          ssl_verify: false
+          bearer_token_auth: true
+          leader_election: false
+    kube_scheduler.yaml: |-
+      cluster_check: true
+      init_config:
+      instances:
+        - prometheus_url: https://scheduler.openshift-kube-scheduler/metrics
+          ssl_verify: false
+          bearer_token_auth: true
+    kube_apiserver_metrics.yaml: |-
+      cluster_check: true
+      init_config:
+      instances:
+        - prometheus_url: https://apiserver.openshift-kube-apiserver/metrics
+          ssl_verify: false
+          bearer_token_auth: true
+    coredns.yaml: |-
+      cluster_check: true
+      init_config:
+      instances:
+        - prometheus_url: https://dns-default.openshift-dns:9154/metrics
+          ssl_verify: false
+          bearer_token_auth: true
+kube-state-metrics:
+  securityContext:
+    enabled: false
