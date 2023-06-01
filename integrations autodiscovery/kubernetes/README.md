@@ -65,7 +65,7 @@ $ kubectl exec -it <AGENT_POD_NAME> agent status
 And if it works, you should see this output:
 ![example-redis-from-agent-status](https://p-qkfgo2.t2.n0.cdn.getcloudapp.com/items/eDuEzez6/0941781c-276c-4b79-95c5-8f4482c47ee5.jpg?v=bb7c808becfc1d49c757ff79089988ea)
 
-:wave:The numbers you can see right after docker:// is the container ID of the container where the annotations have been added.
+:wave: The numbers you can see right after docker:// is the container ID of the container where the annotations have been added.
 
 ConfigMap via Helm
 --------
