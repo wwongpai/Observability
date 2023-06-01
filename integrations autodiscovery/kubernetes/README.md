@@ -84,3 +84,18 @@ spec:
       ports:
         - containerPort: 6379
 ```
+This method requires a file similar to that redisdb.d/auto_conf.yaml file that the Agent has by default. 
+
+To create this file in Kubernetes you can create a ConfigMap containing the file contents, volume mapping that ConfigMap into the pod, and volumeMount mapping that into the agent container. That being said, Helm can do this all the legwork of this for you through [the datadog.confd section](https://github.com/DataDog/helm-charts/blob/main/charts/datadog/values.yaml#L499).
+```
+datadog: 
+  #(...)
+  confd:
+    redisdb.yaml: |-
+      ad_identifiers:
+        - redis
+      init_config:
+      instances:
+        - host: "%%host%%"
+          port: "6379"
+```
