@@ -14,6 +14,8 @@ OpenShift comes with hardened security by default (SELinux, SecurityContextConst
 
 Quick set up
 --------
+For Datadog, OpenShift differs from the standard Kubernetes deployment through the permissions allowed to the agent. These permissions need to be managed through OpenShift. That said, we make it a point to explain that the agent's Daemonset will typically need elevated privileges to run all features of Datadog: https://docs.datadoghq.com/integrations/openshift/#configuration. As explained in the doc, these privileges are typically allowed through Security Context Constraints (or SCCs).
+
 Add the Helm Datadog repo:
 ```
 $ helm repo add datadog https://helm.datadoghq.com
@@ -33,7 +35,12 @@ Create values.yaml, please refer the following link or using this [example value
 ```
 helm charts value - https://github.com/DataDog/helm-charts/blob/main/charts/datadog/values.yaml
 basic value example - https://github.com/DataDog/helm-charts/blob/main/examples/datadog/agent_basic_values.yaml
-specfic to EKS - https://docs.datadoghq.com/containers/kubernetes/distributions/?tab=helm#EKS
+specfic to Openshift - https://docs.datadoghq.com/containers/kubernetes/distributions/?tab=helm#Openshift
+
+The key parts of this configuration are:
+- This creates the Security Context Constraints (SCCs) for both the Agent and Cluster Agent. These SCCs ensure the Agent has the right permissions in this OpenShift cluster that it would ordinarily be blocked. This means you do not need to manually deploy the SCC in this cluster.
+- Tolerations are added to ensure the Agent can be deployed on the tainted node
+- Kubelet TLS Verification is disabled
 ```
 
 Start the agent with this command:
