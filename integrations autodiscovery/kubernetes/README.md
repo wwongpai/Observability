@@ -48,8 +48,8 @@ spec:
 ```
 Several important things to note:
 
-- You can notice that init_configs and instances are actually the different sections we use to configure each integration on a regular host (non-containerized environment), here for example for Redis. This means that you can use all the parameters available in the conf.yaml.example file in these annotations. 
+- You can notice that init_configs and instances are actually the different sections we use to configure each integration on a regular host (non-containerized environment), [here](https://github.com/DataDog/integrations-core/blob/master/redisdb/datadog_checks/redisdb/data/conf.yaml.example) for example for Redis. This means that you can use all the parameters available in the conf.yaml.example file in these annotations. 
 
-- The check_names is just the name of the check (here redisdb). To be sure about which name you can use, you can go to the integrations-core repository: GitHub - DataDog/integrations-core: Core integrations of the Datadog Agent 
+- The check_names is just the name of the check (here redisdb). To be sure about which name you can use, you can go to [the integrations-core repository](https://github.com/DataDog/integrations-core)
 
 - The container_identifier that you can see right before check_names, init_configs and instances which is redis in this example. This value must match the value in spec.containers.name
