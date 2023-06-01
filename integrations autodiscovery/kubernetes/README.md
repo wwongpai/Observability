@@ -21,7 +21,7 @@ Annotations
 --------
 To see how annotations work, we only need to have the Agent running on the cluster and another pod where the integration we are looking for is running.
 
-For this example, we are going to configure annotations on a redis pods to collect redis metrics. You can use this redis.yaml file to deploy it:
+For this example, we are going to configure annotations on a redis pods to collect redis metrics. You can use this [redis.yaml](https://github.com/wwongpai/Observability/blob/main/integrations%20autodiscovery/kubernetes/redis.yaml) file to deploy it:
 ```
 apiVersion: v1
 kind: Pod
