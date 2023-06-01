@@ -7,7 +7,7 @@ https://docs.datadoghq.com/containers/kubernetes/installation?tab=helm
 
 Quick set up
 --------
-add the Helm Datadog repo:
+Add the Helm Datadog repo:
 ```
 $ helm repo add datadog https://helm.datadoghq.com
 $ helm repo update
