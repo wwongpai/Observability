@@ -69,7 +69,7 @@ ConfigMap via Helm
 --------
 Let’s now configure the Redis check the other way around: the configuration will be on the Agent side and not on the application pod side.
 
-For this, you can keep the Redis pod without the annotations:
+For this, you can keep [the Redis pod](https://github.com/wwongpai/Observability/blob/main/integrations%20autodiscovery/kubernetes/redis-no-annotation.yaml) without the annotations:
 ```
 apiVersion: v1
 kind: Pod
