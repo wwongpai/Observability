@@ -33,6 +33,6 @@ Need more visibilities? please jump into the area you are looking for:
 - [APM](https://docs.datadoghq.com/containers/kubernetes/apm/?tab=helm)
 - [Log Collection](https://docs.datadoghq.com/containers/kubernetes/log/?tab=helm)
 - [Prometheus & OpoenMetrics: Collect your exposed Prometheus and OpenMetrics metrics from your application running inside Kubernetes by using the Datadog Agent, and the Datadog-OpenMetrics or Datadog-Prometheus integrations](https://docs.datadoghq.com/containers/kubernetes/prometheus/?tab=kubernetesadv2)
-- [Control plane monitoring]
+- [Control plane monitoring](https://docs.datadoghq.com/containers/kubernetes/control_plane/?tab=helm)
 
 
