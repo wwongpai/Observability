@@ -58,7 +58,19 @@ clusterAgent:
   rbac:
     create: true
     serviceAccountName: default
-   
+  ## @param admissionController - object - required
+  ## Enable the admissionController to automatically inject APM and
+  ## DogStatsD config and standard tags (env, service, version) into
+  ## your pods
+  #
+  admissionController:
+    enabled: true
+
+    ## @param mutateUnlabelled - boolean - optional
+    ## Enable injecting config without having the pod label:
+    ## admission.datadoghq.com/enabled="true"
+    #
+    mutateUnlabelled: false
   # Enable the metricsProvider to be able to scale based on metrics in Datadog  
   metricsProvider:
     enabled: true
