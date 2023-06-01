@@ -24,10 +24,10 @@ Start the agent with this command:
 $ helm install datadog -f values.yaml datadog/datadog
 ```
 
-Start using and enjoy the ride:
-```
-https://www.datadoghq.com/blog/unify-kubernetes-insights-with-the-kubernetes-overview-page/
-```
+Start using and enjoy the ride: 
+[Unify kubernetes insight with the Kubernetes overveiw page](https://www.datadoghq.com/blog/unify-kubernetes-insights-with-the-kubernetes-overview-page)
+[Live container](https://docs.datadoghq.com/infrastructure/livecontainers)
+
 
 
 
