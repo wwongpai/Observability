@@ -67,6 +67,27 @@ And if it works, you should see this output:
 
 :wave: The numbers you can see right after docker:// is the container ID of the container where the annotations have been added.
 
+:wave: For deployments, replication controllers, replica sets, etc in which pods are not directly defined, add the annotations under spec.template.metadata as this will place the annotations on the generated pods.
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+#(...)
+spec:
+  template:
+    metadata:
+      #(...)
+      annotations:
+        ad.datadoghq.com/nginx-test.check_names: '["nginx"]'
+        ad.datadoghq.com/nginx-test.init_configs: '[{}]'
+        ad.datadoghq.com/nginx-test.instances: '[{"nginx_status_url": "http://%%host%%/nginx_status"}]'
+    spec:
+      containers:
+      - name: nginx-test
+        image: nginx:latest
+```
+
 ConfigMap via Helm
 --------
 Let’s now configure the Redis check the other way around: the configuration will be on the Agent side and not on the application pod side.
