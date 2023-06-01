@@ -2,7 +2,7 @@
 
 Official document
 --------
-[Installing the necessary components\](https://docs.datadoghq.com/containers/kubernetes/installation?tab=helm)
+https://docs.datadoghq.com/containers/kubernetes/installation?tab=helm
 
 
 Quick set up
