@@ -31,21 +31,32 @@ kubectl create secret generic datadog-api-secret --from-literal api-key=$DD_API_
 kubectl create secret generic datadog-app-secret --from-literal app-key=$DD_APP_KEY
 ```
 
-Create values.yaml, please refer the following link or using this [example values.yaml](https://github.com/wwongpai/Observability/blob/main/agent/eks/value.yaml)
+Create values.yaml, please refer the following link or using this [example values.yaml](https://github.com/wwongpai/Observability/blob/main/agent/openshift/values.yaml)
 ```
 helm charts value - https://github.com/DataDog/helm-charts/blob/main/charts/datadog/values.yaml
 basic value example - https://github.com/DataDog/helm-charts/blob/main/examples/datadog/agent_basic_values.yaml
 specfic to Openshift - https://docs.datadoghq.com/containers/kubernetes/distributions/?tab=helm#Openshift
+```
 
 The key parts of this configuration are:
 - This creates the Security Context Constraints (SCCs) for both the Agent and Cluster Agent. These SCCs ensure the Agent has the right permissions in this OpenShift cluster that it would ordinarily be blocked. This means you do not need to manually deploy the SCC in this cluster.
 - Tolerations are added to ensure the Agent can be deployed on the tainted node
 - Kubelet TLS Verification is disabled
+
+For reference you can see the SCC template files here:
+- [helm-charts/cluster-agent-scc.yaml at main · DataDog/helm-charts ](https://github.com/DataDog/helm-charts/blob/main/charts/datadog/templates/cluster-agent-scc.yaml)
+- [helm-charts/agent-scc.yaml at main · DataDog/helm-charts ](https://github.com/DataDog/helm-charts/blob/main/charts/datadog/templates/agent-scc.yaml)
+
+:wave: When installing the chart, we recommend to install on a non-default namespace. Due to existing SecurityContextConstraints in the default namespace.
+
+To do so first create your desired namespace (can name whatever):
+```
+kubectl create namespace datadog-openshift
 ```
 
-Start the agent with this command:
+Then run the install command like normal, adding --namespace <Your Namespace> (or -n for short)
 ```
-$ helm install datadog -f values.yaml datadog/datadog
+$ helm install datadog -f values.yaml -n datadog-openshift datadog/datadog
 ```
 
 Start using and enjoy the ride:
