@@ -1,0 +1,7 @@
+datadog:
+  apiKey: <YOUR_API_KEY>
+  appKey: <YOUR_APP_KEY>
+  kubelet: 
+    tlsVerify: false
+  apm:
+    socketEnabled: true
