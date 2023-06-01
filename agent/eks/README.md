@@ -36,6 +36,7 @@ Need more visibilities? please jump into the area you are looking for:
 - [Control plane monitoring](https://docs.datadoghq.com/containers/kubernetes/control_plane/?tab=helm)
 
 Appendix 1 - Helm comnmands
+--------
 Install a chart:
 ```
 helm install <RELEASE_NAME> -f values.yaml --set datadog.apiKey=<DATADOG_API_KEY> datadog/datadog --set targetSystem=<TARGET_SYSTEM>
