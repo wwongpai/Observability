@@ -53,3 +53,13 @@ Several important things to note:
 - The check_names is just the name of the check (here redisdb). To be sure about which name you can use, you can go to [the integrations-core repository](https://github.com/DataDog/integrations-core)
 
 - The container_identifier that you can see right before check_names, init_configs and instances which is redis in this example. This value must match the value in spec.containers.name
+
+Now that our Redis pod is ready we can deploy it with the following command:
+```
+$ kubectl apply -f redis.yaml
+```
+After a few minutes, you can run the Agent status command on the Agent pod to see if this redis check works:
+```
+$ kubectl exec -it <AGENT_POD_NAME> agent status
+```
+![x](https://p-qkfgo2.t2.n0.cdn.getcloudapp.com/items/eDuEzez6/0941781c-276c-4b79-95c5-8f4482c47ee5.jpg?v=bb7c808becfc1d49c757ff79089988ea)
