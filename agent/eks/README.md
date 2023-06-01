@@ -12,7 +12,7 @@ Add the Helm Datadog repo:
 $ helm repo add datadog https://helm.datadoghq.com
 $ helm repo update
 ```
-Create API key and App key in Datadog following [his link](https://docs.datadoghq.com/account_management/api-app-keys)
+Create API key and App key in Datadog following [this link](https://docs.datadoghq.com/account_management/api-app-keys)
 
 Create secret
 ```
