@@ -35,4 +35,30 @@ Need more visibilities? please jump into the area you are looking for:
 - [Prometheus & OpoenMetrics: Collect your exposed Prometheus and OpenMetrics metrics from your application running inside Kubernetes by using the Datadog Agent, and the Datadog-OpenMetrics or Datadog-Prometheus integrations](https://docs.datadoghq.com/containers/kubernetes/prometheus/?tab=kubernetesadv2)
 - [Control plane monitoring](https://docs.datadoghq.com/containers/kubernetes/control_plane/?tab=helm)
 
+Appendix 1 - Helm comnmands
+Install a chart:
+```
+helm install <RELEASE_NAME> -f values.yaml --set datadog.apiKey=<DATADOG_API_KEY> datadog/datadog --set targetSystem=<TARGET_SYSTEM>
+```
+Upgrade a chart (for changes after install):
+```
+helm upgrade <RELEASE_NAME> -f values.yaml --set datadog.apiKey=<DATADOG_API_KEY> datadog/datadog --set targetSystem=<TARGET_SYSTEM>
+```
+Uninstall a chart:
+```
+helm uninstall <RELEASE_NAME>
+```
+List all your charts:
+```
+helm list
+```
+Get values
+```
+helm get values <RELEASE_NAME>
+```
+You can append the -n NAMESPACE flag on any of these commands too, to run these with respect to a given Kubernetes Namespace.
+
+You can find more commands about Helm here: https://helm.sh/docs/helm/helm/
+
+
 
