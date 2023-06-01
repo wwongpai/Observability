@@ -18,6 +18,14 @@ helm charts value - https://github.com/DataDog/helm-charts/blob/main/charts/data
 basic value example - https://github.com/DataDog/helm-charts/blob/main/examples/datadog/agent_basic_values.yaml
 specfic to EKS - https://docs.datadoghq.com/containers/kubernetes/distributions/?tab=helm#EKS
 ```
+create API key and App key in Datadog following [his link](https://docs.datadoghq.com/account_management/api-app-keys)
+Create secret
+```
+kubectl create secret generic datadog-api-secret --from-literal api-key=$DD_API_KEY
+```
+```
+kubectl create secret generic datadog-app-secret --from-literal app-key=$DD_APP_KEY
+```
 
 Start the agent with this command:
 ```
