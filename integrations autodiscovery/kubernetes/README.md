@@ -62,4 +62,25 @@ After a few minutes, you can run the Agent status command on the Agent pod to se
 ```
 $ kubectl exec -it <AGENT_POD_NAME> agent status
 ```
-![x](https://p-qkfgo2.t2.n0.cdn.getcloudapp.com/items/eDuEzez6/0941781c-276c-4b79-95c5-8f4482c47ee5.jpg?v=bb7c808becfc1d49c757ff79089988ea)
+And if it works, you should see this output:
+![example-redis-from-agent-status](https://p-qkfgo2.t2.n0.cdn.getcloudapp.com/items/eDuEzez6/0941781c-276c-4b79-95c5-8f4482c47ee5.jpg?v=bb7c808becfc1d49c757ff79089988ea)
+
+ConfigMap via Helm
+--------
+Let’s now configure the Redis check the other way around: the configuration will be on the Agent side and not on the application pod side.
+
+For this, you can keep the Redis pod without the annotations:
+```
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis    
+  labels:
+    name: redis
+spec:
+  containers:
+    - name: redis
+      image: redis
+      ports:
+        - containerPort: 6379
+```
