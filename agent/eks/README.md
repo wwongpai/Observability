@@ -19,6 +19,7 @@ basic value example - https://github.com/DataDog/helm-charts/blob/main/examples/
 specfic to EKS - https://docs.datadoghq.com/containers/kubernetes/distributions/?tab=helm#EKS
 ```
 Create API key and App key in Datadog following [his link](https://docs.datadoghq.com/account_management/api-app-keys)
+
 Create secret
 ```
 kubectl create secret generic datadog-api-secret --from-literal api-key=$DD_API_KEY
