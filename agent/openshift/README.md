@@ -25,10 +25,10 @@ Create API key and App key in Datadog following [this link](https://docs.datadog
 
 Create secret
 ```
-kubectl create secret generic datadog-api-secret --from-literal api-key=$DD_API_KEY
+oc create secret generic datadog-app-key -n datadog --from-literal=app-key=<ADD_YOUR_APP_KEY_HERE>
 ```
 ```
-kubectl create secret generic datadog-app-secret --from-literal app-key=$DD_APP_KEY
+oc create secret generic datadog-api-key -n datadog --from-literal=api-key=<ADD_YOUR_API_KEY_HERE>
 ```
 
 Create values.yaml, please refer the following link or using this [example values.yaml](https://github.com/wwongpai/Observability/blob/main/agent/openshift/values.yaml)
@@ -51,7 +51,7 @@ For reference you can see the SCC template files here:
 
 To do so first create your desired namespace (can name whatever):
 ```
-kubectl create namespace datadog-openshift
+oc new-project datadog-openshift
 ```
 
 Then run the install command like normal, adding --namespace <Your Namespace> (or -n for short)
