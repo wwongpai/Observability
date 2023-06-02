@@ -1,6 +1,6 @@
-# Datadog Agent Details
+# How to install the Datadog agent on Host
 
-Official document
+Datadog Agent Details
 --------
 For details about installing the agent, see [Getting started with the Agent](https://docs.datadoghq.com/getting_started/agent/).
 
