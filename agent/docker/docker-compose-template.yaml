@@ -23,6 +23,8 @@ services:
       - DD_LOGS_ENABLED=true
       - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true
       - DD_LOGS_CONFIG_DOCKER_CONTAINER_USE_FILE=true
+      - DD_DOCKER_LABELS_AS_TAGS={"my.custom.label.team":"team"}
+      - DD_TAGS='env:dd101-sre'
 
 # Uncomment to force log collection of existing containers via log file
 #      - DD_LOGS_CONFIG_DOCKER_CONTAINER_FORCE_USE_FILE=true
@@ -61,12 +63,17 @@ services:
 #      - /sys/kernel/debug:/sys/kernel/debug
 
 # Uncomment if Network Performance Monitoring (NPM) is required.
+#    volumes:
+#      - /sys/kernel/debug:/sys/kernel/debug
 #    cap_add:
 #      - SYS_ADMIN
 #      - SYS_RESOURCE
 #      - SYS_PTRACE
 #      - NET_ADMIN
+#      - NET_BROADCAST
+#      - NET_RAW
 #      - IPC_LOCK
+#      - CHOWN   
 #    security_opt:
 #      - apparmor:unconfined
 
