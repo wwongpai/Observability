@@ -39,4 +39,9 @@ To tells Datadog to use the PostgreSQL integration's log pipeline to parse this 
 com.datadoghq.ad.logs: '[{"source": "postgresql", "service": "database"}]'
 ```
 
+Finally, you need to add an environment variable to the agent service. This allows the Agent to accept APM traces from other containers. You'll see later how APM traces PostgreSQL through instrumented applications that connect to the database.
+```
+- DD_APM_NON_LOCAL_TRAFFIC=true
+```
+
 [Full docker-compose.yaml](https://github.com/wwongpai/Observability/blob/main/integrations%20autodiscovery/docker/docker-compose-postgres-example-ad.yaml) after adding above autodiscovery labels
