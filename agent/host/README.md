@@ -8,10 +8,10 @@ The Datadog Agent is open source, installed onto your hosts, and is push-only.
 
 The Datadog Agent comes with many integrations for data collection across a wide variety of sources, see [Integrations](https://docs.datadoghq.com/integrations/).
 
-[Supported OS versions](https://docs.datadoghq.com/agent/basic_agent_usage/?tab=agentv6v7#supported-platforms)
-[Agent Commands](https://docs.datadoghq.com/agent/guide/agent-commands/?tab=agentv6v7)
-[Agent Configuration Files](https://docs.datadoghq.com/agent/guide/agent-configuration-files/?tab=agentv6v7)
-[Adding the agent package to an internal repository](https://docs.datadoghq.com/agent/guide/installing-the-agent-on-a-server-with-limited-internet-connectivity/#pagetitle)
+- [Supported OS versions](https://docs.datadoghq.com/agent/basic_agent_usage/?tab=agentv6v7#supported-platforms)
+- [Agent Commands](https://docs.datadoghq.com/agent/guide/agent-commands/?tab=agentv6v7)
+- [Agent Configuration Files](https://docs.datadoghq.com/agent/guide/agent-configuration-files/?tab=agentv6v7)
+- [Adding the agent package to an internal repository](https://docs.datadoghq.com/agent/guide/installing-the-agent-on-a-server-with-limited-internet-connectivity/#pagetitle)
 
 
 Firewall and Proxy Considerations
