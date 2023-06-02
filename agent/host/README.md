@@ -36,3 +36,4 @@ To see a concise list of the checks the Agent is running and their configuration
 ```
 datadog-agent configcheck
 ```
+Notice that the configuration files for these checks all end in .default, for example, datadog-agent/conf.d/cpu.d/conf.yaml.default
