@@ -125,7 +125,7 @@ Adding Autodiscovery labels to the labels block of the db service,
 ```
 com.datadoghq.ad.check_names: '["postgres"]'
 com.datadoghq.ad.init_configs: '[{}]'
-com.datadoghq.ad.instances: '[{"host":"%%host%%", "port":5432,"username":"datadog","password":"datadog"}]'
+com.datadoghq.ad.instances: '[{"host":"%%host%%", "port":5432,"username":"xxx","password":"xxx"}]'
 ```
 
 Full docker-compose.yaml after adding above autodiscovery labels
@@ -210,7 +210,7 @@ services:
       my.custom.label.team: 'database'
       com.datadoghq.ad.check_names: '["postgres"]'
       com.datadoghq.ad.init_configs: '[{}]'
-      com.datadoghq.ad.instances: '[{"host":"%%host%%", "port":5432,"username":"datadog","password":"datadog"}]'
+      com.datadoghq.ad.instances: '[{"host":"%%host%%", "port":5432,"username":"xxx","password":"xxx"}]'
     volumes:
       - /root/postgres:/var/lib/postgresql/data
       - /root/dd_agent.sql:/docker-entrypoint-initdb.d/dd_agent.sql
