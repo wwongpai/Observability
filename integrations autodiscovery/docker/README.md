@@ -45,3 +45,13 @@ Finally, you need to add an environment variable to the agent service. This allo
 ```
 
 [Full docker-compose.yaml](https://github.com/wwongpai/Observability/blob/main/integrations%20autodiscovery/docker/docker-compose-postgres-example-ad.yaml) after adding above autodiscovery labels
+
+Start application:
+```
+docker-compose up -d
+```
+
+Check the Datadog Agent status by running the following command:
+```
+docker-compose exec datadog agent status
+```
