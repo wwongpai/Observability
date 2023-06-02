@@ -24,9 +24,10 @@ services:
       - DD_LOGS_CONFIG_CONTAINER_COLLECT_ALL=true
       - DD_LOGS_CONFIG_DOCKER_CONTAINER_USE_FILE=true
       
-onfigures the Agent to treat custom container labels as custom tags. In this case, if the Agent reads the label my.custom.label.team, it will assign the value to the tag team.
+# Configures the Agent to treat custom container labels as custom tags. In this case, if the Agent reads the label my.custom.label.team, it will assign the value to the tag team.
 #      - DD_DOCKER_LABELS_AS_TAGS={"my.custom.label.team":"team"}
-      - DD_TAGS='env:dd101-sre'
+# Sets the global env tag for all data emitted from the host. In this case, it is setting the special env tag to dd101-sre.
+#      - DD_TAGS='env:dd101-sre'
 
 # Uncomment to force log collection of existing containers via log file
 #      - DD_LOGS_CONFIG_DOCKER_CONTAINER_FORCE_USE_FILE=true
