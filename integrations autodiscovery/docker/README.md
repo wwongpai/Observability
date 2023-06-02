@@ -16,7 +16,7 @@ labels:
   com.datadoghq.ad.instances: '[{"nginx_status_url": "http://%%host%%/nginx_status"}]'
 ```
 👋 Notice:
-- The integration name in the check_names label should exactly match the agent check's integration name. Double check the naming with the integrations-core repo.
+- The integration name in the check_names label should exactly match the agent check's integration name. Double check the naming with [the integrations-core repo](https://github.com/DataDog/integrations-core/tree/master).
 - init_configs is needed even if empty. If this isn't present, the AD configuration will not be applied for this check, and the check won't run.
 - Instances should be in JSON format. Use a YAML to JSON (or vice versa) formatter to double check that the syntax is correct. Each integration has an example yaml file to compare against (integrations, core checks).
 - In ECS and Fargate, quotations should NOT be escaped when adding labels via the Web UI as AWS will automatically insert escape characters into the JSON. When adding labels via the AWS CLI or directly in the task definition's JSON, quotations NEED to be escaped. For examples, see our public docs.
