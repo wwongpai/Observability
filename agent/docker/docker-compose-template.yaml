@@ -52,6 +52,7 @@ services:
 #      - "8126:8126"
 #      - "8125:8125"
 
+# The volumes block mounts the files on the host filesystem into the container. This gives the Agent tremendous power, able to query the Docker Daemon for data about the Docker environment, as well as process data from the host itself.
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /proc/:/host/proc/:ro
