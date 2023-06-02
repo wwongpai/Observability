@@ -1,39 +1,26 @@
-CREATE A DATADOG ACCOUNT
-Your team can create an account at https://www.datadoghq.com/. Click the “FREE TRIAL” link.
+# Datadog Agent Details
 
-GETTING ACCESS TO DATADOG
-Once your team has an account, an existing member can invite others from this page:
-https://app.datadoghq.com/account/team.
-
-There are three user types––admin, standard, and read-only. After users have access to a Datadog
-account, they can see all dashboards, graphs, and alerts that are included in the account, but only
-admins and standard users can make modifications.
-
-For more information on user roles and permissions, see User Management.
-
-DATADOG AGENT DETAILS
-For details about installing the agent, see Getting started with the Agent.
+Official document
+--------
+For details about installing the agent, see [Getting started with the Agent](https://docs.datadoghq.com/getting_started/agent/).
 
 The Datadog Agent is open source, installed onto your hosts, and is push-only.
 
-The Datadog Agent comes with many integrations for data collection across a wide
-variety of sources, see Integrations.
+The Datadog Agent comes with many integrations for data collection across a wide variety of sources, see [Integrations](https://docs.datadoghq.com/integrations/).
 
-Run the Datadog Agent in your Kubernetes cluster in order to start collecting your cluster and applications metrics, traces, and logs. See, Kubernetes.
+[Supported OS versions](https://docs.datadoghq.com/agent/basic_agent_usage/?tab=agentv6v7#supported-platforms)
+[Agent Commands](https://docs.datadoghq.com/agent/guide/agent-commands/?tab=agentv6v7)
+[Agent Configuration Files](https://docs.datadoghq.com/agent/guide/agent-configuration-files/?tab=agentv6v7)
+[Adding the agent package to an internal repository](https://docs.datadoghq.com/agent/guide/installing-the-agent-on-a-server-with-limited-internet-connectivity/#pagetitle)
 
-FIREWALL AND PROXY CONSIDERATIONS
+
+Firewall and Proxy Considerations
+--------
 Datadog will never reach directly to the agent for any information. Traffic is always initiated by the
 Datadog Agent to our service. The Datadog Agent will only send outbound traffic and will send all
 traffic over SSL via 443 TCP.
 
-For more information about agent endpoints and whitelisting, see: Network Traffic.
-For a list of ports required for local host communication, see: Open Ports.
+For more information about agent endpoints and whitelisting, see: [Network Traffic](https://docs.datadoghq.com/agent/guide/network/?tab=agentv6v7).
+For a list of ports required for local host communication, see: [Open Ports](https://docs.datadoghq.com/agent/guide/network/?tab=agentv6v7#open-ports).
 
-If your network restricts outbound traffic, you can route all agent traffic by proxy. For detailed information about setting up proxies, see: Agent Proxy Configuration.
-
-BASIC AGENT USAGE
-Supported OS versions
-Network Performance Monitoring supported platforms
-Agent Commands
-Agent Configuration Files
-Adding the agent package to an internal repository
+If your network restricts outbound traffic, you can route all agent traffic by proxy. For detailed information about setting up proxies, see: [Agent Proxy Configuration](https://docs.datadoghq.com/agent/proxy/?tab=agentv6v7).
