@@ -51,4 +51,18 @@ FROM gcr.io/datadoghq/agent:latest
 ADD conf.d/redisdb.yaml /etc/datadog-agent/conf.d/redisdb.yaml
 ```
 
+To start the application stack, run:
+```
+docker-compose up -d
+```
+
+Once the containers are running, run the Agent status command:
+```
+docker-compose exec datadog agent status
+```
+
+To see the Agent’s configuration, run the Agent config command:
+```
+docker-compose exec datadog agent config
+```
 
