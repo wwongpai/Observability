@@ -24,3 +24,15 @@ For more information about agent endpoints and whitelisting, see: [Network Traff
 For a list of ports required for local host communication, see: [Open Ports](https://docs.datadoghq.com/agent/guide/network/?tab=agentv6v7#open-ports).
 
 If your network restricts outbound traffic, you can route all agent traffic by proxy. For detailed information about setting up proxies, see: [Agent Proxy Configuration](https://docs.datadoghq.com/agent/proxy/?tab=agentv6v7).
+
+
+Configure Agent Checks
+--------
+The Datadog Agent runs a core set of checks by default. These include cpu, disk, memory, uptime, and more. When you run the datadog-agent status command, these appear in the Collector > Running Checks section of the output.
+
+Each of these checks has a corresponding configuration file located in a subdirectory of datadog-agent/conf.d/.
+
+To see a concise list of the checks the Agent is running and their configuration file paths, run the following command in the terminal.
+```
+datadog-agent configcheck
+```
