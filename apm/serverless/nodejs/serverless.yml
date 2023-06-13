@@ -5,7 +5,6 @@ custom:
   datadog:
     site: datadoghq.com
     apiKey: xxxxxxx
-    ## This parameter is required when collecting telemetry using the Datadog Lambda Extension. Alternatively, you can also set the DATADOG_API_KEY environment variable in your deployment environment.
 
 service: xxxxx
 frameworkVersion: '3'
