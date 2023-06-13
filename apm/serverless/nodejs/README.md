@@ -27,7 +27,7 @@ Update your [serverless.yml](https://github.com/wwongpai/Observability/blob/main
 custom:
   datadog:
     site: <DATADOG_SITE>
-    apiKey: <DATADOG_API_KEY_SECRET_ARN>
+    apiKey: <DATADOG_API_KEY>
 ```
 
 5. Check your package.json and node module
