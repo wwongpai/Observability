@@ -1,6 +1,6 @@
 # How to Instrumenting Node.js Serverless Applications using Serverless Framework and Datadog plugin
 
-1. For this examplem, I will use a simple serverless node application from [Serverless Framework’s repository](https://github.com/serverless/examples).
+1. For this example, I will use a simple serverless node application from [Serverless Framework’s repository](https://github.com/serverless/examples).
 
 2. Install node, npm, and the Serverless Framework CLI
 [Installing Node.js® and NPM on Mac](https://treehouse.github.io/installation-guides/mac/node-mac.html)
