@@ -3,9 +3,9 @@
 1. For this example, I will use a simple serverless node application from [Serverless Framework’s repository](https://github.com/serverless/examples).
 
 2. Install node, npm, and the Serverless Framework CLI
-[Installing Node.js® and NPM on Mac](https://treehouse.github.io/installation-guides/mac/node-mac.html)
-[Setting Up Serverless Framework With AWS](https://www.serverless.com/framework/docs/getting-started/)
-[AWS Credentials](https://www.serverless.com/framework/docs/providers/aws/guide/credentials/)
+- [Installing Node.js® and NPM on Mac](https://treehouse.github.io/installation-guides/mac/node-mac.html)
+- [Setting Up Serverless Framework With AWS](https://www.serverless.com/framework/docs/getting-started/)
+- [AWS Credentials](https://www.serverless.com/framework/docs/providers/aws/guide/credentials/)
 
 3. Deploy an example serverless app
 Using a simple node app, [more detail](https://github.com/serverless/examples/tree/v3/aws-node-express-api)
