@@ -69,7 +69,7 @@ Enhanced metric:
 
 Serverless App:
 
-![serverless](https://p-qkfgo2.t2.n0.cdn.getcloudapp.com/items/bLuZpbQv/9d5db31b-b73f-4c88-b705-c5f2b13fed86.jpg?v=58adecf05f56b01f258e0789ef1b51f1)
+![serverless](https://p-qkfgo2.t2.n0.cdn.getcloudapp.com/items/z8ubwoz4/a560c2e9-45c2-42da-8068-1773ab05b17c.jpg?source=viewer&v=cd0c9684571387c9f79c900de6ad6ea3)
 
 
 Traces & Logs are collected and connected each other (Correlations):
