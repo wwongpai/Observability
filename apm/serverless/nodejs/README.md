@@ -74,4 +74,4 @@ Serverless App:
 
 Traces & Logs are collected and connected each other (Correlations):
 
-![trace-log](https://p-qkfgo2.t2.n0.cdn.getcloudapp.com/items/jkuRyp6G/b0fbc090-230b-4583-9338-b12c16e1c254.jpg?v=48f4e1b563f80299fdb155dc2e08479c)
+![trace-log](xxx)
