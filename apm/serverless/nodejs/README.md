@@ -1,3 +1,4 @@
+# How to Instrumenting Node.js Serverless Applications using Serverless Framework and Datadog plugin
 
 1. For this examplem, I will use a simple serverless node application from [Serverless Framework’s repository](https://github.com/serverless/examples).
 
@@ -12,14 +13,17 @@ Using a simple node app, [more detail](https://github.com/serverless/examples/tr
 4. The Datadog Serverless Plugin automatically configures your functions to send metrics, traces, and logs to Datadog through the Datadog Lambda Extension ([link](https://docs.datadoghq.com/serverless/installation/nodejs/?tab=serverlessframework) to an official document).
 
 Install the Datadog Serverless Plugin:
+```
 $ npm install serverless-plugin-datadog --save
+```
 
 Update your serverless.yml:
+```
 custom:
   datadog:
     site: <DATADOG_SITE>
     apiKey: <DATADOG_API_KEY_SECRET_ARN>
-
+```
 
 5. Check your package.json and node module
 $ vi package.json
@@ -27,3 +31,4 @@ You should see "serverless-plugin-datadog" as a dependency
 
 $ ls -l node_modules | grep serverless-plugin-datadog
 
+Refer to this [link](https://docs.datadoghq.com/serverless/libraries_integrations/plugin/) for configuration option of serverless-plugin-datadog
