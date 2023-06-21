@@ -3,6 +3,7 @@
 
 # targetSystem -- Target OS for this deployment (possible values: linux, windows)
 targetSystem: "linux"
+registry: public.ecr.aws/datadog
 datadog:
   # If using secrets, create a secret for API Key and App Key first
   apiKeyExistingSecret: <DATADOG_API_KEY_SECRET>
@@ -49,7 +50,6 @@ datadog:
   networkMonitoring:
     # datadog.networkMonitoring.enabled -- Enable network performance monitoring
     enabled: false
-registry: gcr.io/datadoghq
 agents:
   rbac:
     create: true
