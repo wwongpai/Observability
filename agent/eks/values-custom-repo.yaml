@@ -50,14 +50,10 @@ datadog:
     # datadog.networkMonitoring.enabled -- Enable network performance monitoring
     enabled: false
 agents:
-  image:
-    repository: gcr.io/datadoghq/agent
   rbac:
     create: true
     serviceAccountName: default
 clusterAgent:
-  image:
-    repository: gcr.io/datadoghq/cluster-agent
   enabled: true
   rbac:
     create: true
