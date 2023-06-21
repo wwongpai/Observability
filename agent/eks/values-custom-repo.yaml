@@ -49,6 +49,7 @@ datadog:
   networkMonitoring:
     # datadog.networkMonitoring.enabled -- Enable network performance monitoring
     enabled: false
+registry: gcr.io/datadoghq
 agents:
   rbac:
     create: true
