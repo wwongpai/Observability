@@ -48,7 +48,7 @@ datadog:
     enabled: true
   networkMonitoring:
     # datadog.networkMonitoring.enabled -- Enable network performance monitoring
-    enabled: false
+    enabled: true
 agents:
   rbac:
     create: true
