@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnet-app
+  labels:
+    tags.datadoghq.com/env: "dev"
+    tags.datadoghq.com/service: "dotnet-app"
+    tags.datadoghq.com/version: "1.0"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dotnet-app
+  template:
+    metadata:
+      annotations:
+        ad.datadoghq.com/tags: '{"service: "dotnet-app"}'
+        ad.datadoghq.com/dotnet-app.logs: '[{"source": "csharp","service": "dotnet-app"}]'   
+        # This is needed to specify the dd-lib-dotnet-init container image tag in use
+        # https://console.cloud.google.com/gcr/images/datadoghq/GLOBAL/dd-lib-dotnet-init
+        # ie: v2.24.0 is the image tag for version 2.24.0 of the .NET tracer
+        admission.datadoghq.com/dotnet-lib.version: "v2.24.0"
+      labels:
+        app: dotnet-app
+        tags.datadoghq.com/env: "dev"
+        tags.datadoghq.com/service: "dotnet-app"
+        tags.datadoghq.com/version: "1.0"
+        # This is needed because mutateUnlabelled was set to false
+        admission.datadoghq.com/enabled: "true"
+    spec:
+      containers:
+      - name: dotnet-app
+        image: not-a-real-dockerhub-this-is-local/dotnet-app:1.0
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 8081
+        env:
+        - name: DD_TRACE_DEBUG
+          value: 'true'
+        - name: DD_LOGS_INJECTION
+          value: 'true'
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dotnet-app
+spec:
+  selector:
+    app: dotnet-app
+  ports:
+  - name: http
+    protocol: TCP
+    port: 8081
+  type: LoadBalancer
