@@ -13,6 +13,8 @@ datadog:
   # appKey: <DATADOG_APP_KEY>
 
   clusterName: <CLUSTER_NAME>
+
+  logLevel: debug
   
   ## Learn more about tagging: https://docs.datadoghq.com/tagging/
   tags: []
