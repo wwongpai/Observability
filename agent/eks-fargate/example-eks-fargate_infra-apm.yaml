@@ -25,6 +25,11 @@ spec:
      ## Running the Agent as a side-car
      - image: datadog/agent
        name: datadog-agent
+       ## Enabling port 8126 for Trace collection
+       ports:
+        - containerPort: 8126
+          name: traceport
+          protocol: TCP
        env:
        - name: DD_API_KEY
          value: "<YOUR_DATADOG_API_KEY>"
