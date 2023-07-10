@@ -4,15 +4,19 @@ metadata:
  name: "<APPLICATION_NAME>"
  namespace: default
 spec:
+ replicas: 1
  selector:
    matchLabels:
      app: "<APPLICATION_NAME>"
- replicas: 1
  template:
    metadata:
      labels:
        app: "<APPLICATION_NAME>"
      name: "<POD_NAME>"
+     annotations:
+      ad.datadoghq.com/<CONTAINER_NAME>.check_names: '[<CHECK_NAME>]'
+      ad.datadoghq.com/<CONTAINER_IDENTIFIER>.init_configs: '[<INIT_CONFIG>]'
+      ad.datadoghq.com/<CONTAINER_IDENTIFIER>.instances: '[<INSTANCE_CONFIG>]'
    spec:
      serviceAccountName: datadog-agent
      containers:
@@ -30,8 +34,6 @@ spec:
          value: "datadoghq.com"
        - name: DD_EKS_FARGATE
          value: "true"
-       - name: DD_CLUSTER_NAME
-         value: "<CLUSTER_NAME>"
        - name: DD_KUBERNETES_KUBELET_NODENAME
          valueFrom:
            fieldRef:
