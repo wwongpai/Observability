@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: "<APPLICATION_NAME>"
+ namespace: default
+spec:
+ selector:
+   matchLabels:
+     app: "<APPLICATION_NAME>"
+ replicas: 1
+ template:
+   metadata:
+     labels:
+       app: "<APPLICATION_NAME>"
+     name: "<POD_NAME>"
+   spec:
+     serviceAccountName: datadog-agent
+     containers:
+     - name: "<APPLICATION_NAME>"
+       image: "<APPLICATION_IMAGE>"
+     ## Running the Agent as a side-car
+     - image: datadog/agent
+       name: datadog-agent
+       env:
+       - name: DD_API_KEY
+         value: "<YOUR_DATADOG_API_KEY>"
+         ## Set DD_SITE to "datadoghq.eu" to send your
+         ## Agent data to the Datadog EU site
+       - name: DD_SITE
+         value: "datadoghq.com"
+       - name: DD_EKS_FARGATE
+         value: "true"
+       - name: DD_CLUSTER_NAME
+         value: "<CLUSTER_NAME>"
+       - name: DD_KUBERNETES_KUBELET_NODENAME
+         valueFrom:
+           fieldRef:
+             apiVersion: v1
+             fieldPath: spec.nodeName
+      resources:
+          requests:
+            memory: "256Mi"
+            cpu: "200m"
+          limits:
+            memory: "256Mi"
+            cpu: "200m"
