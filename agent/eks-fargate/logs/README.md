@@ -1,4 +1,4 @@
-Logs Collection
+# Logs Collection
 
 Method 1: Collecting logs from EKS on Fargate with Fluent Bit [Official Document Guide](https://docs.datadoghq.com/integrations/eks_fargate/#log-collection)
 --------
