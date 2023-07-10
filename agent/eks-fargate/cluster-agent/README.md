@@ -14,7 +14,10 @@ Use a manually-created secret (clusterAgent.tokenExistingSecret in Helm, not ava
 If the EKS cluster runs only Fargate workloads, you need a standalone Cluster Agent deployment. And, as described above, choose one of the two options for making the token reachable.
 
 Use the following Helm values.yaml:
+--------
+[Official doc](https://docs.datadoghq.com/integrations/eks_fargate/#running-the-cluster-agent-or-the-cluster-checks-runner)
 
+```
 datadog:
   apiKey: <YOUR_DATADOG_API_KEY>
   clusterName: <CLUSTER_NAME>
@@ -23,8 +26,11 @@ agents:
 clusterAgent:
   enabled: true
   replicas: 2
+```
 
   In both cases, you need to change the Datadog Agent sidecar manifest in order to allow communication with the Cluster Agent:
+  --------
+  ```
          env:
         - name: DD_CLUSTER_AGENT_ENABLED
           value: "true"
@@ -36,3 +42,4 @@ clusterAgent:
           value: "true"
         - name: DD_CLUSTER_NAME
           value: <CLUSTER_NAME>
+```
