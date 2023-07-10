@@ -1,3 +1,4 @@
+Logs Collection
 Collecting logs from EKS on Fargate with Fluent Bit [Official Document Guide](https://docs.datadoghq.com/integrations/eks_fargate/#log-collection)
 
 Monitor EKS Fargate logs by using Fluent Bit to route EKS logs to CloudWatch Logs and the Datadog Forwarder to route logs to Datadog.
