@@ -1,0 +1,8 @@
+datadog:
+  clusterName: <their-cluster-name>
+agents:
+  enabled: false # No DaemonSet generated
+clusterAgent:
+  enabled: true
+  replicas: 1
+  token: "<some 32 chars random-token>" # Some token, random, it needs to be hardcoded to avoid issue when running `helm upgrade`
