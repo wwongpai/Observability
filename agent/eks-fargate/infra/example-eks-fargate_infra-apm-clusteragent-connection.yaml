@@ -53,7 +53,7 @@ spec:
        - name: DD_CLUSTER_AGENT_AUTH_TOKEN
          value: "<some 32 chars random-token>"
        - name: DD_CLUSTER_AGENT_URL
-         value: https://dca-datadog-cluster-agent.datadog-fargate.svc.cluster.local:5005 # format is https://<helm-install-name>-datadog-cluster-agent.<dca-install-namespace>.svc.cluster.local:5005
+         value: https://ddogca-datadog-cluster-agent.datadog-fargate.svc.cluster.local:5005 # format is https://<helm-install-name>-datadog-cluster-agent.<ddogca-install-namespace>.svc.cluster.local:5005
       resources:
           requests:
             memory: "256Mi"
