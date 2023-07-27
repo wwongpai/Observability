@@ -33,5 +33,22 @@ To be noticed:
 For example, if when they installed the helm chart, the release name was dca and they installed the dca in the namespace datadog-fargate their URL will look like https://dca-datadog-cluster-agent.datadog-fargate.svc.cluster.local:5005
 
 
-5.
+5. We recommend to use cluster check runners to run cluster checks in an EKS Fargate environment. The Cluster Agent can dispatch out two types of checks: endpoint checks and cluster checks. The checks are slightly different. Endpoint checks are dispatched specifically to the regular Datadog Agent on the same node as the application pod endpoints. Executing endpoint checks on the same node as the application endpoint allows proper tagging of the metrics. Cluster checks monitor internal Kubernetes services, as well as external services like managed databases and network devices, and can be dispatched much more freely. Using Cluster Check Runners is optional. When you use Cluster Check Runners, a small, dedicated set of Agents runs the cluster checks, leaving the endpoint checks to the normal Agent. This strategy can be beneficial to control the dispatching of cluster checks, especially when the scale of your cluster checks increases. To enable this, add the parameter clusterChecksRunner.enabled set to true to the helm chart from above
+```
+clusterChecksRunner
+  enabled: true
+```
+
+For example, let’s say I wanted to run the kube_apiserver_metrics check as a cluster check. I would define it under the parameter clusterAgent.confd in my helm chart like so:
+```
+clusterAgent:
+[...]
+  confd: 
+    kube_apiserver_metrics.yaml: |-
+      cluster_check: true
+      instances:
+        - prometheus_url: https://%%env_KUBERNETES_SERVICE_HOST%%:443/metrics
+          bearer_token_auth: true
+          ssl_verify: false
+```
 
