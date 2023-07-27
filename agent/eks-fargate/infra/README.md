@@ -1,3 +1,7 @@
 ## Infrastructure Monitoring (Metrics Collection)
 
-dsad
+- Deploy rbac.yaml
+```
+kubectl apply -f rbac.yaml
+```
+- 
