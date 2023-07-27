@@ -3,7 +3,7 @@ Reference [Official Document Guide](https://docs.datadoghq.com/integrations/eks_
 
 Monitor EKS Fargate
 --------
-Infrastucture monitoring - 
-Log Collection
-Process Collection
-Autodiscovery Integrations
+- Infrastucture monitoring
+- Log Collection
+- Process Collection
+- Autodiscovery Integrations
