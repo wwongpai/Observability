@@ -1,9 +1,12 @@
-Logs Collection
-Collecting logs from EKS on Fargate with Fluent Bit [Official Document Guide](https://docs.datadoghq.com/integrations/eks_fargate/#log-collection)
+EKS Fargate - Infra monitoring
+Reference [Official Document Guide](https://docs.datadoghq.com/integrations/eks_fargate/#configuration)
 
-Monitor EKS Fargate logs by using Fluent Bit to route EKS logs to CloudWatch Logs and the Datadog Forwarder to route logs to Datadog.
+Monitor EKS Fargate
 --------
-To configure Fluent Bit to send logs to CloudWatch, create a Kubernetes ConfigMap that specifies CloudWatch Logs as its output. The ConfigMap specifies the log group, region, prefix string, and whether to automatically create the log group.
+Infrastucture monitoring - 
+Log Collection
+Process Collection
+Autodiscovery Integrations
 
 ```
  kind: ConfigMap
