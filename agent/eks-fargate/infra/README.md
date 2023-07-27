@@ -5,7 +5,7 @@
 kubectl apply -f rbac.yaml
 ```
 
-2. Deploy the agent as a sidecar [example-eks-fargate_infra-apm.yaml](https://github.com/wwongpai/Observability/tree/main/agent/eks-fargate/infra)https://github.com/wwongpai/Observability/tree/main/agent/eks-fargate/infra
+2. Deploy the agent as a sidecar [example-eks-fargate_infra-apm.yaml](https://github.com/wwongpai/Observability/tree/main/agent/eks-fargate/infra)
 ```
 kubectl apply -f example-eks-fargate_infra-apm.yaml
 ```
