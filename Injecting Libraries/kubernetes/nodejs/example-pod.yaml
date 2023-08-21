@@ -11,7 +11,13 @@ metadata:
     tags.datadoghq.com/version: "1.0"                         <<<<<<<<<
   name: adservice-7b85b77cd6-5x2rn
   namespace: default
-  spec:
+spec:
   containers:
-    name: server
- <below portion is TRUNCATED>
+  - name: express-app
+    image: not-a-real-dockerhub-this-is-local/express:1.0
+    imagePullPolicy: Never
+    ports:
+    - containerPort: 3000
+    env:
+    - name: DD_TRACE_DEBUG
+    value: 'true'
