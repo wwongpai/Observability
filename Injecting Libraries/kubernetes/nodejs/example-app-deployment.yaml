@@ -3,9 +3,9 @@ kind: Deployment
 metadata:
   name: express-app
   labels:
-    tags.datadoghq.com/env: "dev"
-    tags.datadoghq.com/service: "express-app"
-    tags.datadoghq.com/version: "1.0"
+    tags.datadoghq.com/env: "dev"  # Unified service tag - Deployment Env tag
+    tags.datadoghq.com/service: "express-app"  # Unified service tag - Deployment Env tag
+    tags.datadoghq.com/version: "1.0"  # Unified service tag - Deployment Env tag
 spec:
   replicas: 1
   selector:
@@ -18,14 +18,14 @@ spec:
         # This is needed to specify the dd-lib-js-init container image tag in use
         # https://console.cloud.google.com/gcr/images/datadoghq/GLOBAL/dd-lib-js-init
         # ie: latest is the image tag for whatever happens to be the latest version
-        admission.datadoghq.com/js-lib.version: "latest"
+        admission.datadoghq.com/js-lib.version: "latest"  # js-lib
       labels:
         app: express-app
-        tags.datadoghq.com/env: "dev"
-        tags.datadoghq.com/service: "express-app"
-        tags.datadoghq.com/version: "1.0"
+        tags.datadoghq.com/env: "dev"  # Unified service tag - Pod Env tag
+        tags.datadoghq.com/service: "express-app"  # Unified service tag - Pod Env tag
+        tags.datadoghq.com/version: "1.0"  # Unified service tag - Pod Env tag
         # This line is necessary when using `mutateUnlabelled: false`:
-        admission.datadoghq.com/enabled: "true"
+        admission.datadoghq.com/enabled: "true"  # Enable Admission Controller to mutate new pods part of this deployment
     spec:
       containers:
       - name: express-app
