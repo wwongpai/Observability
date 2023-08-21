@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    admission.datadoghq.com/js-lib.version: "latest"        <<<<<<<<<
+  labels:
+    admission.datadoghq.com/enabled: "true"                   <<<<<<<<<
+    app: express-app
+    tags.datadoghq.com/env: "dev"                             <<<<<<<<<
+    tags.datadoghq.com/service: "express-app"                 <<<<<<<<<
+    tags.datadoghq.com/version: "1.0"                         <<<<<<<<<
+  name: adservice-7b85b77cd6-5x2rn
+  namespace: default
+  spec:
+  containers:
+    name: server
+ <below portion is TRUNCATED>
