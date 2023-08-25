@@ -3,19 +3,23 @@
 
 # targetSystem -- Target OS for this deployment (possible values: linux, windows)
 targetSystem: "linux"
-registry: public.ecr.aws/datadog
+
+# registry -- Registry to use for all Agent images (default gcr.io)
+## Currently we offer Datadog Agent images on:
+## GCR - use gcr.io/datadoghq (default)
+## DockerHub - use docker.io/datadog
+## AWS - use public.ecr.aws/datadog
+registry: local.registry/datadog
+
 datadog:
   # If using secrets, create a secret for API Key and App Key first
-  apiKeyExistingSecret: <DATADOG_API_KEY_SECRET>
-  appKeyExistingSecret: <DATADOG_APP_KEY_SECRET>
+  # apiKeyExistingSecret: <DATADOG_API_KEY_SECRET>
+  # appKeyExistingSecret: <DATADOG_APP_KEY_SECRET>
   # If not using secrets, then use apiKey and appKey instead
-  # apiKey: <DATADOG_API_KEY>
-  # appKey: <DATADOG_APP_KEY>
+  apiKey: xxx
+  appKey: xxx
 
-  clusterName: <CLUSTER_NAME>
-
-  ## debug mode
-  logLevel: debug
+  clusterName: <cluster name>
   
   ## Learn more about tagging: https://docs.datadoghq.com/tagging/
   tags: []
@@ -52,7 +56,14 @@ datadog:
     enabled: true
   networkMonitoring:
     # datadog.networkMonitoring.enabled -- Enable network performance monitoring
-    enabled: false
+    enabled: true
+
+  env:
+    - name: DD_PROXY_HTTPS
+      value: "https://x.x.x.x:x"
+    - name: DD_PROXY_HTTP
+      value: "http://x.x.x.x:x"
+
 agents:
   rbac:
     create: true
@@ -76,10 +87,13 @@ clusterAgent:
     #
     mutateUnlabelled: false
   # Enable the metricsProvider to be able to scale based on metrics in Datadog  
-  metricsProvider:
-    enabled: true
-    createReaderRbac: true
-    useDatadogMetrics: true
-    service:
-      type: ClusterIP
-      port: 8443
+  env:
+    - name: DD_PROXY_HTTPS
+      value: "https://x.x.x.x:x"
+    - name: DD_PROXY_HTTP
+      value: "http://x.x.x.x:x"
+  
+    # Using local registry
+    # Refer link - https://docs.datadoghq.com/tracing/trace_collection/library_injection_local/?tab=kubernetes#container-registries
+    - name: DD_ADMISSION_CONTROLLER_AUTO_INSTRUMENTATION_CONTAINER_REGISTRY
+      value: local.registry/datadog
