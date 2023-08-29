@@ -1,0 +1,23 @@
+datadog:
+  apiKeyExistingSecret: datadog-secret
+  kubeStateMetricsEnabled: false
+  kubeStateMetricsCore:
+    enabled: true
+  clusterChecks:
+    enabled: true
+  clusterName: <cluster-name>
+clusterAgent:
+  enabled: true
+  token: "<token>"
+  confd: 
+    kube_apiserver_metrics.yaml: |-
+      cluster_check: true
+      instances:
+        - prometheus_url: https://%%env_KUBERNETES_SERVICE_HOST%%:443/metrics
+          bearer_token_auth: true
+          ssl_verify: false
+clusterChecksRunner:
+  enabled: true
+  replicas: 1
+agents: 
+  enabled: false
