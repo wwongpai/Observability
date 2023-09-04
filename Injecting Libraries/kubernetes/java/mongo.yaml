@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mongo
+  template:
+    metadata:
+      annotations:
+        ad.datadoghq.com/mongo.logs: '[{"source":"mongo","service":"my_java_app"}]'
+      labels:
+        app: mongo
+    spec:
+      containers:
+        - name: mongo
+          image: mongo:latest
+          ports:
+            - containerPort: 8081
+              name: port1
+            - containerPort: 27017
+              name: port2
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              value: "xxx"
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              value: "xxx"
+            - name: MONGO_INITDB_DATABASE 
+              value: "xxx"
