@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  labels:
+    tags.datadoghq.com/env: "prod"
+    tags.datadoghq.com/service: "my_java_app"
+    tags.datadoghq.com/version: "1.0"  
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      annotations:
+        ad.datadoghq.com/tags: '{"service: "my_java_app"}'
+        admission.datadoghq.com/java-lib.version: "latest"    
+      labels:
+        app: web
+        tags.datadoghq.com/env: "prod"
+        tags.datadoghq.com/service: "my_java_app"
+        tags.datadoghq.com/version: "1.0"
+        admission.datadoghq.com/enabled: "true"        
+    spec:
+      containers:
+        - name: web
+          image: wwongpai/sample-java-noapm-new:1.0
+          ports:
+            - containerPort: 8080
+          env:
+            - name: MONGO_ACCESS_DB_USER
+              value: "xxx"
+            - name: MONGO_ACCESS_DB_PW
+              value: "xxx"
+            - name: MONGO_ACCESS_DB_DBNAME 
+              value: "xxx"
