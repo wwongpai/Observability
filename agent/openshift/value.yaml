@@ -69,9 +69,9 @@ agents:
 clusterAgent:
   env:
     - name: DD_PROXY_HTTPS
-      value: "http://10.27.208.188:8080"
+      value: "http://10.xx.xx.xx:8080"
     - name: DD_PROXY_HTTP
-      value: "http://10.27.208.188:8080"
+      value: "http://10.xx.xx.xx:8080"
     - name: DD_NO_PROXY_NONEXECT_MATCH
       value: "true"
     - name: DD_PROXY_NO_PROXY
