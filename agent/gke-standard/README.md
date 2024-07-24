@@ -1,4 +1,4 @@
-# How to install the Datadog Agent on GKE Cluster Standard (You manage the cluster’s underlying infrastructure, giving you node configuration flexibilit)
+# How to install the Datadog Agent on GKE Standard Cluster
 
 Official document
 --------
