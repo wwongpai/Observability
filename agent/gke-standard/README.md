@@ -29,7 +29,7 @@ Please be notice: my example is using site: ap1.datadoghq.com
 ```
 helm charts value - https://github.com/DataDog/helm-charts/blob/main/charts/datadog/values.yaml
 basic value example - https://github.com/DataDog/helm-charts/blob/main/examples/datadog/agent_basic_values.yaml
-specfic to EKS - https://docs.datadoghq.com/containers/kubernetes/distributions/?tab=helm#EKS
+specfic to GKE - https://docs.datadoghq.com/containers/kubernetes/distributions/?tab=helm#EKS](https://docs.datadoghq.com/containers/kubernetes/distributions/?tab=datadogoperator#GKE)
 ```
 
 Start the agent with this command:
