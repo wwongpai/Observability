@@ -3,8 +3,9 @@ datadog:
   apiKeyExistingSecret: datadog-secret
   site: ap1.datadoghq.com
   apm:
-    instrumentation:
-      enabled: true
+    portEnabled: true
+    socketPath: /var/run/datadog/apm.socket
+    hostSocketPath: /var/run/datadog/
   logs:
     enabled: true
     containerCollectAll: true
