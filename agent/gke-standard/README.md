@@ -22,7 +22,10 @@ kubectl create secret generic datadog-api-secret --from-literal api-key=$DD_API_
 kubectl create secret generic datadog-app-secret --from-literal app-key=$DD_APP_KEY
 ```
 
-Create values.yaml, please refer the following link or using this [example values.yaml](https://github.com/wwongpai/Observability/blob/main/agent/eks/value.yaml)
+Create values.yaml, please refer the following link or using this [example values.yaml](https://github.com/wwongpai/Observability/blob/main/agent/gke-standard/value.yaml)
+
+Please be notice: my example is using site: ap1.datadoghq.com
+
 ```
 helm charts value - https://github.com/DataDog/helm-charts/blob/main/charts/datadog/values.yaml
 basic value example - https://github.com/DataDog/helm-charts/blob/main/examples/datadog/agent_basic_values.yaml
