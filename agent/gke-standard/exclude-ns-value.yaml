@@ -1,0 +1,38 @@
+registry: gcr.io/datadoghq
+datadog:
+  apiKeyExistingSecret: datadog-secret
+  site: ap1.datadoghq.com
+  containerExclude: "kube_namespace:<NAMESPACE_NAME> name:<CONTAINER_NAME>"
+  apm:
+    portEnabled: true
+    socketPath: /var/run/datadog/apm.socket
+    hostSocketPath: /var/run/datadog/
+  logs:
+    enabled: true
+    containerCollectAll: true
+  asm:
+    threats:
+      enabled: true
+    sca:
+      enabled: true
+    iast:
+      enabled: true
+  securityAgent:
+    runtime:
+      enabled: true
+    compliance:
+      enabled: true
+  sbom:
+    containerImage:
+      enabled: true
+    host:
+      enabled: true
+  serviceMonitoring:
+    enabled: true
+  networkMonitoring:
+    enabled: true
+  processAgent:
+    enabled: true
+    processCollection: true
+remoteConfiguration:
+  enabled: true
