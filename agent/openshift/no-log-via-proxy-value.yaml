@@ -1,0 +1,90 @@
+# Features enabled: Logs, Process, Security, USM, NPM, Remote Configuration
+
+datadog:
+  registry: gcr.io/datadoghq
+  tags:
+    - env:prod
+  site: datadoghq.com
+  apm:
+    portEnabled: true
+    port: 8126
+    socketEnabled: false
+  kubelet:
+    tlsVerify: false
+  processAgent:
+    enabled: true
+    processCollection: true
+#   securityAgent:
+#     runtime:
+#       enabled: true
+#     compliance:
+#       enabled: true
+  containerImageCollection:
+    enabled: true
+#   sbom:
+#     containerImage:
+#       enabled: true
+#     host:
+#       enabled: true
+  serviceMonitoring:
+    enabled: true
+#   networkMonitoring:
+#     enabled: true
+  dogstatsd:
+    originDetection: true
+    useSocketVolume: false
+    useHostPort: true
+  env:
+    - name: DD_PROXY_HTTPS
+      value: "http://10.xx.xx.xx:8080"
+    - name: DD_PROXY_HTTP
+      value: "http://10.xx.xx.xx:8080"
+    - name: DD_NO_PROXY_NONEXECT_MATCH
+      value: "true"
+    - name: DD_PROXY_NO_PROXY
+      value: "127.0.0.0/8 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16"
+  confd: {}
+  #   redisdb.yaml: |-
+  #     init_config:
+  #     instances:
+  #       - host: "name"
+  #         port: "6379"
+  #   kong.yaml: |-
+  #     init_config:
+  #     instances:
+  #       - openmetrics_endpoint: <KONG_INSTANCE_URL>:8001/metrics
+agents:
+  podSecurity:
+    securityContextConstraints:
+      create: true
+#   containers:
+#     traceAgent:
+#       env:
+#         - name: DD_APM_IGNORE_RESOURCES
+#           value: "/healthcheck","/healthz"
+clusterAgent:
+  env:
+    - name: DD_PROXY_HTTPS
+      value: "http://10.xx.xx.xx:8080"
+    - name: DD_PROXY_HTTP
+      value: "http://10.xx.xx.xx:8080"
+    - name: DD_NO_PROXY_NONEXECT_MATCH
+      value: "true"
+    - name: DD_PROXY_NO_PROXY
+      value: "127.0.0.0/8 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16"
+  podSecurity:
+    securityContextConstraints:
+      # clusterAgent.podSecurity.securityContextConstraints.create -- If true, create a SCC resource for Cluster Agent pods
+      create: true
+  admissionController:
+    configMode: "hostip"
+  confd: {}
+  #   mysql.yaml: |-
+  #     cluster_check: true
+  #     instances:
+  #       - host: <EXTERNAL_IP>
+  #         port: 3306
+  #         username: datadog
+  #         password: <YOUR_CHOSEN_PASSWORD>
+remoteConfiguration:
+  enabled: true
