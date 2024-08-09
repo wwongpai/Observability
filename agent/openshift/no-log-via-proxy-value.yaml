@@ -1,10 +1,17 @@
 # Features enabled: Logs, Process, Security, USM, NPM, Remote Configuration
-
 datadog:
   registry: gcr.io/datadoghq
   tags:
     - env:prod
   site: datadoghq.com
+  # If using secrets, create a secret for API Key and App Key first
+  apiKeyExistingSecret: <DATADOG_API_KEY_SECRET>
+  appKeyExistingSecret: <DATADOG_APP_KEY_SECRET>
+  # If not using secrets, then use apiKey and appKey instead
+  # apiKey: <DATADOG_API_KEY>
+  # appKey: <DATADOG_APP_KEY>
+
+  clusterName: <CLUSTER_NAME>
   apm:
     portEnabled: true
     port: 8126
