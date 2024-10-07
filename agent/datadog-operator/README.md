@@ -1,4 +1,4 @@
-# How to install the Datadog Agent on AWS EKS Cluster with Datadog Operator and Instrumenting application using local lib injection
+# How to install the Datadog Agent on AWS EKS Cluster with Datadog Operator and Instrumenting apps using local lib injection
 
 Official document
 --------
