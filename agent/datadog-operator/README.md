@@ -21,8 +21,9 @@ Create API key and App key in Datadog following [this link](https://docs.datadog
 kubectl create secret generic datadog-secret --from-literal api-key=<DATADOG_API_KEY>
 ```
 
-3. Create a datadog-agent.yaml file with the spec of your DatadogAgent deployment configuration. The following sample configuration enables metrics, logs, events, npm, apm and enabling multi-line log detection:P
-*Change <Cluster Name> to the name you want.
+3. Create a datadog-agent.yaml file with the spec of your DatadogAgent deployment configuration. The following sample configuration enables metrics, logs, events, npm, apm and enabling multi-line log detection:
+- Change <Cluster Name> to the name you want
+- For more configuration option, please check [this link](https://github.com/DataDog/datadog-operator/blob/main/docs/configuration.v2alpha1.md)
 ```
 apiVersion: datadoghq.com/v2alpha1
 kind: DatadogAgent
@@ -57,7 +58,6 @@ spec:
         - name: DD_LOGS_CONFIG_AUTO_MULTI_LINE_DETECTION
           value: "true"
 ```
-For more configuration option, please check [this link](https://github.com/DataDog/datadog-operator/blob/main/docs/configuration.v2alpha1.md)
 
 4. Deploy the Datadog Agent:
 ```
