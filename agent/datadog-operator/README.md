@@ -22,7 +22,7 @@ kubectl create secret generic datadog-secret --from-literal api-key=<DATADOG_API
 ```
 
 3. Create a datadog-agent.yaml file with the spec of your DatadogAgent deployment configuration. The following sample configuration enables metrics, logs, events, npm, apm and enabling multi-line log detection:
-- Change <Cluster Name> to the name you want
+- Change a cluster name to the name you want
 - For more configuration option, please check [this link](https://github.com/DataDog/datadog-operator/blob/main/docs/configuration.v2alpha1.md)
 ```
 apiVersion: datadoghq.com/v2alpha1
