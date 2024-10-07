@@ -6,9 +6,10 @@ Official document
 [https://docs.datadoghq.com/tracing/trace_collection/library_injection_local/?tab=kubernetes](https://docs.datadoghq.com/tracing/trace_collection/library_injection_local/?tab=kubernetes)
 
 
-
-Quick set up
+Quick set up Datadog Operator on EKS
 --------
+[https://docs.datadoghq.com/containers/kubernetes/installation?tab=helm](https://docs.datadoghq.com/containers/kubernetes/installation/?tab=datadogoperator)
+
 1. Install the Datadog Operator with Helm:
 ```
 helm repo add datadog https://helm.datadoghq.com
@@ -64,8 +65,93 @@ spec:
 kubectl apply -f /path/to/your/datadog-agent.yaml
 ```
 
+5. Checking if daemonset and deployment work properly:
+```
+kubectl get ds
+kubectl get deploy
+kubectl get pods
+```
 
+APM Instrumentation with lib injection
+--------
+[https://docs.datadoghq.com/tracing/trace_collection/library_injection_local/?tab=kubernetes](https://docs.datadoghq.com/tracing/trace_collection/library_injection_local/?tab=kubernetes)
 
+1. Enable Datadog Admission Controller to mutate app pods and also annotate them for lib injection
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    # (...)
+spec:
+  template:
+    metadata:
+      labels:
+        admission.datadoghq.com/enabled: "true" # Enable Admission Controller to mutate new pods in this deployment
+      annotations:
+        admission.datadoghq.com/java-lib.version: "<CONTAINER IMAGE TAG>"
+    spec:
+      containers:
+        - # (...)
+```
 
+2. Tag your app pods in deployment and pod spec with [Unified Service Tags](https://docs.datadoghq.com/getting_started/tagging/unified_service_tagging/?tab=kubernetes)
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    tags.datadoghq.com/env: "prod" # Unified service tag - Deployment Env tag
+    tags.datadoghq.com/service: "my-service" # Unified service tag - Deployment Service tag
+    tags.datadoghq.com/version: "1.1" # Unified service tag - Deployment Version tag
+  # (...)
+spec:
+  template:
+    metadata:
+      labels:
+        tags.datadoghq.com/env: "prod" # Unified service tag - Pod Env tag
+        tags.datadoghq.com/service: "my-service" # Unified service tag - Pod Service tag
+        tags.datadoghq.com/version: "1.1" # Unified service tag - Pod Version tag
+        admission.datadoghq.com/enabled: "true" # Enable Admission Controller to mutate new pods part of this deployment
+      annotations:
+        admission.datadoghq.com/java-lib.version: "<CONTAINER IMAGE TAG>"
+    spec:
+      containers:
+        - # (...)
+```
 
+3. Inject trace_id and span_id into your logs to correlate with trace, you need to add DD_LOGS_INJECTION through the environment variable.
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    tags.datadoghq.com/env: "prod" # Unified service tag - Deployment Env tag
+    tags.datadoghq.com/service: "my-service" # Unified service tag - Deployment Service tag
+    tags.datadoghq.com/version: "1.1" # Unified service tag - Deployment Version tag
+  # (...)
+spec:
+  template:
+    metadata:
+      labels:
+        tags.datadoghq.com/env: "prod" # Unified service tag - Pod Env tag
+        tags.datadoghq.com/service: "my-service" # Unified service tag - Pod Service tag
+        tags.datadoghq.com/version: "1.1" # Unified service tag - Pod Version tag
+        admission.datadoghq.com/enabled: "true" # Enable Admission Controller to mutate new pods part of this deployment
+      annotations:
+        admission.datadoghq.com/java-lib.version: "<CONTAINER IMAGE TAG>"
+    spec:
+      containers:
+        - name: <CONTAINER_NAME>
+          image: <CONTAINER_IMAGE>/<TAG>
+          env:
+            - name: DD_LOGS_INJECTION
+              value: "true"
+```
 
+4. Apply the configuration.
+```
+kubectl apply -f deployment.yaml
+```
+
+Learn more example from [this link](https://github.com/wwongpai/Observability/tree/main/Injecting%20Libraries/kubernetes)
