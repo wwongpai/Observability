@@ -59,6 +59,44 @@ spec:
         - name: DD_LOGS_CONFIG_AUTO_MULTI_LINE_DETECTION
           value: "true"
 ```
+- If want to exclude some namespaces, for example, you want to exlude namespace:kube-system
+```
+apiVersion: datadoghq.com/v2alpha1
+kind: DatadogAgent
+metadata:
+  name: datadog
+spec:
+  global:
+    clusterName: <Cluster Name>
+    credentials:
+      apiSecret:
+        secretName: datadog-secret
+        keyName: api-key
+  features:
+    logCollection:
+      enabled: true
+      containerCollectAll: true
+    liveProcessCollection:
+      enabled: true
+    apm:
+      enabled: true
+    cspm:
+      enabled: true
+    npm:
+      enabled: true
+    usm:
+      enabled: true
+    admissionController:
+      enabled: true
+  override:
+    nodeAgent:
+      env:
+        - name: DD_LOGS_CONFIG_AUTO_MULTI_LINE_DETECTION
+          value: "true"
+        - name: DD_CONTAINER_EXCLUDE
+          value: "kube_namespace:kube-system"
+```
+
 
 4. Deploy the Datadog Agent:
 ```
