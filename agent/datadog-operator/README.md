@@ -59,7 +59,7 @@ spec:
         - name: DD_LOGS_CONFIG_AUTO_MULTI_LINE_DETECTION
           value: "true"
 ```
-- If want to exclude some namespaces, for example, you want to exlude namespace:kube-system
+- If want to exclude some namespaces, for example, you want to exlude namespace:kube-system find more information [here](https://docs.datadoghq.com/containers/guide/container-discovery-management/?tab=datadogoperator#environment-variables).
 ```
 apiVersion: datadoghq.com/v2alpha1
 kind: DatadogAgent
