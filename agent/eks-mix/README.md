@@ -131,9 +131,9 @@ spec:
         - name: DD_LOGS_CONFIG_AUTO_MULTI_LINE_DETECTION
           value: "true"
 ```
-Things to be aware of
-- If you set the name of your DatadogAgent to be datadog and the Fargate RBAC resources in your rbac.yaml to be datadog-agent, the Operator will override the Fargate RBAC resources with its own RBAC called <datadogagent_name>-agent due to conflicting names hence causing issues. You want to either change the name of the DatadogAgent to be something else other than datadog OR change the RBAC resource names. In the operator.yaml I named the DatadogAgent datadog-operator so the RBAC doesn’t conflict.
-- Use the spec.features.admissionController.agentSidecarInjection.selectors property to configure a custom selector to target workload pods instead of updating the workload to add agent.datadoghq.com/sidecar:fargate labels.
+> [!NOTE]Things to be aware of
+>  - If you set the name of your DatadogAgent to be datadog and the Fargate RBAC resources in your rbac.yaml to be datadog-agent, the Operator will override the Fargate RBAC resources with its own RBAC called <datadogagent_name>-agent due to conflicting names hence causing issues. You want to either change the name of the DatadogAgent to be something else other than datadog OR change the RBAC resource names. In the operator.yaml I named the DatadogAgent datadog-operator so the RBAC doesn’t conflict.
+>  - Use the spec.features.admissionController.agentSidecarInjection.selectors property to configure a custom selector to target workload pods instead of updating the workload to add agent.datadoghq.com/sidecar:fargate labels.
 
 6. Deploy Agent with the above configuration file
 ```
