@@ -140,7 +140,8 @@ spec:
 ```
 kubectl apply -f datadog-agent.yaml -n datadog
 ```
-The Admission Controller does not mutate pods that are already created. In case you have deployed agent after current workload have been running, you need to scale or rolling update the workloads.
+> [!NOTE]
+> The Admission Controller does not mutate pods that are already created. In case you have deployed agent after current workload have been running, you need to scale or rolling update the workloads.
 
 7. In application deployment manifest, you need to add a service account
 ```
@@ -168,4 +169,5 @@ spec:
         - containerPort: 80
 
 ```
-** Bind this [RBAC (Getting Started with Datadog )](https://docs.datadoghq.com/integrations/eks_fargate/?tab=datadogoperator#aws-eks-fargate-rbac) to application pod by setting Service Account name. In this case, I created a new one called datadog-agent as you see in the first step. If application deployment already has a service account in place, you can use that service account instead of creating a datadog-agent one by adding the following permission to your existing ClusterRole
+> [!NOTE]
+> Bind this [RBAC (Getting Started with Datadog )](https://docs.datadoghq.com/integrations/eks_fargate/?tab=datadogoperator#aws-eks-fargate-rbac) to application pod by setting Service Account name. In this case, I created a new one called datadog-agent as you see in the first step. If application deployment already has a service account in place, you can use that service account instead of creating a datadog-agent one by adding the following permission to your existing ClusterRole
