@@ -112,6 +112,7 @@ spec:
       enabled: true
     admissionController:
       enabled: true
+      agentCommunicationMode: hostip
       agentSidecarInjection:
         enabled: true
         provider: fargate
