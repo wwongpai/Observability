@@ -3,9 +3,9 @@
 In this scenario, the EKS cluster hosts workloads running on both EC2 instances and Fargate. The cluster includes multiple namespaces: one for the default settings, one for applications running on Fargate, one for applications on EC2, and another dedicated to Datadog monitoring.
 
 Official document
---------
-[https://docs.datadoghq.com/containers/kubernetes/installation?tab=helm](https://docs.datadoghq.com/containers/kubernetes/installation?tab=datadogoperator)
-[https://docs.datadoghq.com/integrations/eks_fargate/?tab=datadogoperator](https://docs.datadoghq.com/integrations/eks_fargate/?tab=datadogoperator)
+---------  
+- [https://docs.datadoghq.com/containers/kubernetes/installation?tab=helm](https://docs.datadoghq.com/containers/kubernetes/installation?tab=datadogoperator)
+- [https://docs.datadoghq.com/integrations/eks_fargate/?tab=datadogoperator](https://docs.datadoghq.com/integrations/eks_fargate/?tab=datadogoperator)
 
 
 Quick set up
