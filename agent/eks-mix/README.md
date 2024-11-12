@@ -116,10 +116,6 @@ spec:
       agentSidecarInjection:
         enabled: true
         provider: fargate
-        selectors:
-        - objectSelector:
-            matchLabels:
-              "app": my-fargate-nginx # this label for custom selector to target workload pods instead of updating the workload to add agent.datadoghq.com/sidecar:fargate labels.
         profiles:
         - env:
           - name: DD_PROCESS_AGENT_PROCESS_COLLECTION_ENABLED
@@ -143,7 +139,7 @@ kubectl apply -f datadog-agent.yaml -n datadog
 > [!NOTE]
 > The Admission Controller does not mutate pods that are already created. In case you have deployed agent after current workload have been running, you need to scale or rolling update the workloads.
 
-7. In application deployment manifest, you need to add a service account
+7. In application deployment manifest, you need to add a service account and you can inject an Agent sidecar into every pod that has the label agent.datadoghq.com/sidecar:fargate.
 ```
 apiVersion: apps/v1
 kind: Deployment
@@ -159,7 +155,7 @@ spec:
     metadata:
       labels:
         app: my-fargate-nginx
-      #  agent.datadoghq.com/sidecar: fargate <-- required when not define spec.features.admissionController.agentSidecarInjection.selectors
+        agent.datadoghq.com/sidecar: fargate
     spec:
       serviceAccountName: datadog-agent # service account with required RBAC
       containers:
