@@ -110,6 +110,8 @@ spec:
         enabled: false
     npm:
       enabled: true
+    usm:
+      enabled: true
     admissionController:
       enabled: true
       agentCommunicationMode: hostip
