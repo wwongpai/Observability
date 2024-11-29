@@ -4,6 +4,9 @@ Official document
 --------
 https://docs.datadoghq.com/containers/kubernetes/distributions/?tab=datadogoperator#Rancher
 
+Rancher installations are similar to vanilla Kubernetes installations, requiring only some minor configuration:
+- Tolerations are required to schedule the Node Agent on controlplane and etcd nodes.
+- The cluster name should be set as it cannot be retrieved automatically from the cloud provider.
 
 Quick set up Datadog Operator on Rancher
 [https://docs.datadoghq.com/containers/kubernetes/installation?tab=helm](https://docs.datadoghq.com/containers/kubernetes/installation/?tab=datadogoperator)
