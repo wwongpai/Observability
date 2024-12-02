@@ -38,7 +38,7 @@ public class NotesHelper {
         privateMethod1();
     }
 
-    //Manual trace annotation
+    //Manual trace annotation and add a custom tag
     @Trace(operationName = "traceMethod2", resourceName = "NotesHelper.anotherProcess")
     public void anotherProcess() throws InterruptedException {
         Thread.sleep(50);
